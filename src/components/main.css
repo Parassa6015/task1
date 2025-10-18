@@ -16,13 +16,14 @@ html, body, #root {
   --primary: #0ea5a3;
   --muted: #6b7280;
   --white: #ffffff;
+  --header-height: 64px; /* match header height in header.css */
 }
 
 /* make main fill viewport and keep header offset */
 .site-main {
-  /* push below fixed header and use remaining viewport for centering */
-  margin-top: 64px;                      /* keep header space */
-  height: calc(100vh - 64px);            /* full remaining viewport height */
+  /* keep content below the fixed header using padding so content is never hidden */
+  padding-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
   background: var(--color-bg);
   color: var(--color-ink);
 
@@ -33,9 +34,9 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 
-  /* CENTERING */
+  /* Layout: flow from top; center horizontally but allow normal vertical flow */
   align-items: center;    /* horizontal center */
-  justify-content: center; /* vertical center within remaining viewport */
+  justify-content: flex-start; /* start at top of the remaining viewport */
 
   text-align: center;     /* center text inside children */
 }
@@ -98,7 +99,7 @@ html, body, #root {
 
 /* About */
 .about { padding: 2rem 0; background: transparent; }
-.about > * { /* ensure about content is centered by container child rule */ }
+/* about content is centered by the .container > * rule above */
 .about h2 { margin-bottom: 0.5rem; }
 
 /* Causes grid */

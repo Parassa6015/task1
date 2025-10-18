@@ -19,6 +19,16 @@ html, body, #root {
   --header-height: 64px; /* match header height in header.css */
 }
 
+/* Make in-page anchor navigation account for the fixed header */
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+/* Ensure headings used as anchors are not hidden when jumped to */
+h1, h2, h3, h4, h5 {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
 /* make main fill viewport and keep header offset */
 .site-main {
   /* keep content below the fixed header using padding so content is never hidden */

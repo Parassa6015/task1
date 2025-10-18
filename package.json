@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-  "prepare:publish": "rm -rf publish && mkdir -p publish/my-template && cp -R dist/* publish/my-template",
+  "prepare:publish": "rm -rf publish && mkdir -p publish && cp -R dist/* publish/",
   "deploy": "npm run prepare:publish && gh-pages -d publish",
   "check-gh-pages": "git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1 && (git fetch origin gh-pages && git ls-tree -r origin/gh-pages --name-only | sed -n '1,40p') || echo 'No origin/gh-pages remote branch found.'",
   "postinstall": "npm run check-gh-pages || true"

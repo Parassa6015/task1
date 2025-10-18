@@ -1,0 +1,42 @@
+{
+  "name": "my-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://Parassa6015.github.io/task1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+  "prepare:publish": "rm -rf publish && mkdir -p publish/my-template && cp -R dist/* publish/my-template",
+  "deploy": "npm run prepare:publish && gh-pages -d publish",
+  "check-gh-pages": "git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1 && (git fetch origin gh-pages && git ls-tree -r origin/gh-pages --name-only | sed -n '1,40p') || echo 'No origin/gh-pages remote branch found.'",
+  "postinstall": "npm run check-gh-pages || true"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "gh-pages": "^6.3.0",
+    "globals": "^16.4.0",
+    "vite": "npm:rolldown-vite@7.1.14"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.1.14"
+  }
+}
